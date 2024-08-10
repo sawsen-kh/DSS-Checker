@@ -172,6 +172,7 @@ int main(int argc, char *argv[]) {
         finish = clock();
         duration = (double) (finish - start) / CLOCKS_PER_SEC;
         cout << "DSS has been successfully built." << endl;
+        cout<<"\nDSS building duration: "<< duration << " seconds" << endl;
         if (dot_output) builder.writeToFile(file_name + ".dot");
         if (txt_output) builder.outputTXT();
         if (property_file != "") {
@@ -197,13 +198,13 @@ int main(int argc, char *argv[]) {
                     cout << "\tProperty is verified...\n";
                 else
                     cout << "\tProperty is violated...\n";
-                auto duration_intersect {(double) (finish - start) / CLOCKS_PER_SEC};
+                auto duration_intersect {(double) (start_interset - finish_intersect) / CLOCKS_PER_SEC};
                 cout<<"\tVerification duration: "<<duration_intersect<<'\n';
             }
         }
     }
 
-    cout<<"\nDSS building duration: "<< duration << " seconds" << endl;
+
 
     if (dot_output && algorithm != "DSS") petri->writeToFile(file_name + ".dot");
     if (txt_output && algorithm != "DSS") petri->writeTextFile(file_name + ".txt");
